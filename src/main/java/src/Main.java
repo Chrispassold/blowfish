@@ -12,7 +12,8 @@ public class Main {
 
         final Blowfish blowfish = new Blowfish();
 
-        System.out.println(blowfish.enconde("OI"));
+        System.out.println(blowfish.encondeCBC("OI"));
+        System.out.println(blowfish.encondeECB("OI"));
     }
 
 }

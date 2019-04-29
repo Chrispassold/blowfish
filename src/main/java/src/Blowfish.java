@@ -8,10 +8,10 @@ public class Blowfish {
 
     private final SecretKey secretKey;
 
-    public Blowfish() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
+    public Blowfish() throws NoSuchAlgorithmException {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("Blowfish");
         keyGenerator.init(128);
-        SecretKey secretKey = keyGenerator.generateKey();
+        secretKey = keyGenerator.generateKey();
     }
 
     String encondeECB(String value) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
