@@ -6,18 +6,25 @@ import java.security.NoSuchAlgorithmException;
 
 public class Blowfish {
 
-    private final Cipher c;
+    private final SecretKey secretKey;
 
     public Blowfish() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("Blowfish");
         keyGenerator.init(128);
         SecretKey secretKey = keyGenerator.generateKey();
-
-        c = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
-        c.init(Cipher.ENCRYPT_MODE, secretKey);
     }
 
-    String enconde(String value) throws BadPaddingException, IllegalBlockSizeException {
+    String encondeECB(String value) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+        Cipher c = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
+        c.init(Cipher.ENCRYPT_MODE, secretKey);
+
+        return new String(c.doFinal(value.getBytes()));
+    }
+
+    String encondeCBC(String value) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+        Cipher c = Cipher.getInstance("Blowfish/CBC/PKCS5Padding");
+        c.init(Cipher.ENCRYPT_MODE, secretKey);
+
         return new String(c.doFinal(value.getBytes()));
     }
 }
