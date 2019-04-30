@@ -23,6 +23,11 @@ public class Main {
         System.out.println(content_2.length);
         System.out.println(byteToHex(content_2));
         System.out.println("");
+        System.out.println("Caso 3");
+        byte[] content_3 = bf.encodeECB("SABONETE");
+        System.out.println(content_3.length);
+        System.out.println(byteToHex(content_3));
+        System.out.println("");
 
         System.out.println("Caso 4");
         byte[] content_4 = bf.encodeECB("SABONETESABONETESABONETE");
