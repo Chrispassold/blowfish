@@ -2,19 +2,14 @@ package src;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 public class Blowfish {
 
-    private final SecretKey secretKey;
-
-    public Blowfish() throws NoSuchAlgorithmException {
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("Blowfish");
-        keyGenerator.init(128);
-        secretKey = keyGenerator.generateKey();
-    }
+    private final SecretKey secretKey = new SecretKeySpec("ABCDE".getBytes(), "Blowfish");
 
     byte[] encodeECB(String value) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Cipher c = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
