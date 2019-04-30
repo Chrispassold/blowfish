@@ -6,7 +6,6 @@ import javax.crypto.NoSuchPaddingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
 public class Main {
 
@@ -15,7 +14,7 @@ public class Main {
         final Blowfish bf = new Blowfish();
 
         System.out.println("Caso 1");
-        System.out.println(Arrays.toString(bf.encodeECB("FURB")));
+        System.out.println(new String(bf.encodeECB("FURB")));
     }
 
 }
