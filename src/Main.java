@@ -14,7 +14,23 @@ public class Main {
         final Blowfish bf = new Blowfish();
 
         System.out.println("Caso 1");
-        System.out.println(new String(bf.encodeECB("FURB")));
+        byte[] content_1 = bf.encodeECB("FURB");
+        System.out.println(content_1.length);
+        System.out.println(byteToHex(content_1));
+        System.out.println();
+        System.out.println("Caso 2");
+        byte[] content_2 = bf.encodeECB("COMPUTADOR");
+        System.out.println(content_2.length);
+        System.out.println(byteToHex(content_2));
+        System.out.println("");
+    }
+
+    private static String byteToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02X ", b));
+        }
+        return sb.toString();
     }
 
 }
