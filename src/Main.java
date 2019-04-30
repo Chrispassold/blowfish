@@ -12,9 +12,16 @@ public class Main {
 
     public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException {
 
-        final Blowfish blowfish = new Blowfish();
+        final Blowfish bf = new Blowfish();
 
-        // Testando ECB
+        System.out.println("Caso 1");
+        System.out.println(Arrays.toString(bf.encodeECB("FURB")));
+    }
+
+}
+
+/*
+// Testando ECB
         byte[] ecbValue = blowfish.encodeECB("FURB");
         System.out.println(Arrays.toString(ecbValue));
         System.out.println(blowfish.decodeECB(ecbValue));
@@ -31,7 +38,6 @@ public class Main {
         System.out.println(Arrays.toString(cbcValue));
         System.out.println(blowfish.decodeCBC(cbcValue, initVector));
         ///////////////////////////////////////////////////
-
         // CASO 1
         blowfish.encodeECB("FURB");
 
@@ -58,6 +64,4 @@ public class Main {
 
         // TODO CASO 9
         blowfish.encodeECB("FURB");
-    }
-
-}
+* */
