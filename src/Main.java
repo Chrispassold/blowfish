@@ -50,7 +50,7 @@ public class Main {
         System.out.println("");
 
         System.out.println("Caso 7");
-        byte[] content_7 = bf.encodeCBC("SABONETESABONETESABONETE", new byte[]{1,1,2,2,3,3,4,4});
+        byte[] content_7 = bf.encodeCBC("SABONETESABONETESABONETE", new byte[]{ 1, 1, 2, 2, 3, 3, 4, 4 });
         System.out.println(content_7.length);
         System.out.println(byteToHex(content_7));
         //System.out.println(bf.decodeCBC(content_5));
@@ -60,7 +60,7 @@ public class Main {
         byte[] content_8 = bf.encodeCBC("SABONETESABONETESABONETE", new byte[]{10,20,30,40,50,60,70,80});
         System.out.println(content_8.length);
         System.out.println(byteToHex(content_8));
-        //System.out.println(bf.decodeCBC(content_5));
+        System.out.println(bf.decodeCBC(content_8, new byte[]{ 1, 1, 2, 2, 3, 3, 4, 4 }));
         System.out.println("");
     }
 
