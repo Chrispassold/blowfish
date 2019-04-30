@@ -64,6 +64,13 @@ public class Main {
         System.out.println(byteToHex(content_8));
         //System.out.println(bf.decodeCBC(content_5));
         System.out.println();
+
+        System.out.println("Caso 9");
+        byte[] content_9 = bf.encodeECB("FURB");
+        System.out.println(content_9.length);
+        System.out.println(byteToHex(content_9));
+        System.out.println(bf.decodeECB(content_9, "11111"));
+        System.out.println();
     }
 
     private static String byteToHex(byte[] bytes) {

@@ -26,6 +26,14 @@ class Blowfish {
         return new String(c.doFinal(value));
     }
 
+    String decodeECB(byte[] value, String key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+
+        Cipher c = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
+        c.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "Blowfish"));
+
+        return new String(c.doFinal(value));
+    }
+
     /**
      * Funcionará, mas na hora de descriptar dará erro, pois é necessário um vetor de inicialização.
      */
