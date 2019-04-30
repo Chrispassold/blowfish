@@ -69,7 +69,7 @@ public class Main {
         byte[] content_9 = bf.encodeECB("FURB");
         System.out.println(content_9.length);
         System.out.println(byteToHex(content_9));
-        System.out.println(bf.decodeECB(content_9, "11111"));
+//        System.out.println(bf.decodeECB(content_9, "11111"));
         System.out.println();
     }
 
