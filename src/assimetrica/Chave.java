@@ -46,20 +46,19 @@ class Chave {
     }
 
     private static KeyPair montarChave() throws NoSuchAlgorithmException {
-        final int keySize = 1024;
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(keySize);
+        keyPairGenerator.initialize(2048);
         return keyPairGenerator.genKeyPair();
     }
 
-    public RSAPrivateKeySpec getPrivateKeySpec() {
+    RSAPrivateKeySpec getPrivateKeySpec() {
         return new RSAPrivateKeySpec(
                 new BigInteger(privateModulus.toByteArray()),
                 new BigInteger(privateExpoent.toByteArray())
         );
     }
 
-    public RSAPublicKeySpec getPublicKeySpec() {
+    RSAPublicKeySpec getPublicKeySpec() {
         return new RSAPublicKeySpec(
                 new BigInteger(publicModulus.toByteArray()),
                 new BigInteger(publicExpoent.toByteArray())

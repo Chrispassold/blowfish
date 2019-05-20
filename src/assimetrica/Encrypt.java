@@ -24,6 +24,14 @@ public class Encrypt extends BaseCryptDecrypt {
         toFile(signed, fileout);
     }
 
+    @Override
+    public void process(String string) throws Exception {
+        final byte[] bytes = string.getBytes();
+        byte[] signed = process(bytes);
+        toConsole(signed);
+    }
+
+
     private byte[] process(byte[] bytes) throws Exception {
         RSAPrivateKeySpec spec = chave.getPrivateKeySpec();
         final PrivateKey key = kf.generatePrivate(spec);

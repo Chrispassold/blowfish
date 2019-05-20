@@ -24,6 +24,13 @@ public class Decrypt extends BaseCryptDecrypt {
         toFile(signed, fileout);
     }
 
+    @Override
+    public void process(String string) throws Exception {
+        byte[] bytes = base64Decoder.decodeBuffer(string);
+        byte[] signed = process(bytes);
+        toConsole(signed);
+    }
+
     private byte[] process(byte[] bytes) throws Exception {
         RSAPublicKeySpec spec = chave.getPublicKeySpec();
         final PublicKey key = kf.generatePublic(spec);
