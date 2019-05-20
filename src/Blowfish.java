@@ -8,7 +8,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-class Blowfish {
+public class Blowfish {
 
     private final SecretKey secretKey = new SecretKeySpec("ABCDE".getBytes(StandardCharsets.UTF_8), "Blowfish");
 
