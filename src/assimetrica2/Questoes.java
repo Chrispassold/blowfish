@@ -31,7 +31,8 @@ public class Questoes {
     public void exercicio1() throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         final RSAPublicKey aPublic = Crypth.getPUBLIC();
         final RSAPrivateKey aPrivate = Crypth.getPRIVATE();
-
+        System.out.println();
+        System.out.println();
         print("=========================================");
         print("===============EXERCICIO 1===============");
 
@@ -43,6 +44,8 @@ public class Questoes {
     }
 
     public void exercicio2(String plaintext) throws IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException, IOException, InvalidKeySpecException {
+        System.out.println();
+        System.out.println();
         print("=========================================");
         print("===============EXERCICIO 2===============");
         final byte[] bytes = crypth.encryptAES(plaintext);
@@ -54,12 +57,14 @@ public class Questoes {
     }
 
     public void exercicio3() throws IOException, NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException, InvalidKeySpecException {
+        System.out.println();
+        System.out.println();
+        print("=========================================");
+        print("===============EXERCICIO 3===============");
         final byte[] bytes = CrypthMain.readBytes(AESENC);
         final byte[] aeskey = crypth.decryptAESKeyWithRSAKey(bytes);
         final byte[] file = CrypthMain.readBytes(TEXTOENC);
         final String s = crypth.decryptMessage(file, aeskey);
-        print("=========================================");
-        print("===============EXERCICIO 3===============");
         print(s);
     }
 }

@@ -14,56 +14,34 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.Scanner;
 
 public class CrypthMain {
-    private final static File fileToCrypt = new File("./tocrypt.txt");
-    private final static File fileOutputCrypt = new File("./encrypt.enc");
-    private final static File fileOutputDecrypt = new File("./decrypt.dec");
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchPaddingException {
         final Crypth crypth = new Crypth();
         final Questoes questoes = new Questoes(crypth);
 
-        String option;
-
         questoes.exercicio1();
 
-        do {
-            System.out.println();
-            System.out.println();
-            System.out.println("1 - Encriptar arquivo");
-            System.out.println("2 - Decriptar arquivo");
-            System.out.println("0 - Sair");
+        String texto = ask("Informe o texto para encriptar");
+        questoes.exercicio2(texto);
 
-            option = scanner.nextLine();
-
-            if (option.equals("1")) {
-                String texto = ask("Informe o texto para encriptar");
-                questoes.exercicio2(texto);
-            }
-
-            if (option.equals("2")) {
-                questoes.exercicio3();
-            }
-
-            if (option.equals("0")) {
-                System.out.println("XAU!!");
-            }
-
-        } while (!option.equals("0"));
+        questoes.exercicio3();
 
     }
 
     // Method which write the bytes into a file
     public static void writeBytes(byte[] bytes, File fileout) throws IOException {
-        if(fileout.exists())
+        if (fileout.exists())
             fileout.delete();
 
+        System.out.println("Escrevendo bytes para " + fileout.getName());
         try (OutputStream os = new FileOutputStream(fileout)) {
             os.write(bytes);
         }
     }
 
     public static byte[] readBytes(File fileout) throws IOException {
+        System.out.println("Lendo bytes de " + fileout.getName());
         return Files.readAllBytes(fileout.toPath());
     }
 
