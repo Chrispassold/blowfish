@@ -26,7 +26,7 @@ public class Decrypt extends BaseCryptDecrypt {
 
     @Override
     public void process(String string) throws Exception {
-        byte[] bytes = base64Decoder.decodeBuffer(string);
+        final byte[] bytes = base64Decoder.decodeBuffer(string);
         byte[] signed = process(bytes);
         toConsole(signed);
     }

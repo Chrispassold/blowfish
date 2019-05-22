@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 abstract class BaseCryptDecrypt {
     final Chave chave;
@@ -21,7 +22,7 @@ abstract class BaseCryptDecrypt {
     BaseCryptDecrypt(Chave chave) throws NoSuchPaddingException, NoSuchAlgorithmException {
         this.chave = chave;
         this.kf = KeyFactory.getInstance("RSA");
-        this.cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        this.cipher = Cipher.getInstance("RSA");
     }
 
     void toFile(byte[] bytes, File fileout) throws IOException {
@@ -33,7 +34,7 @@ abstract class BaseCryptDecrypt {
     void toConsole(byte[] bytes) {
         System.out.println();
         System.out.println("================ TEXTO ================");
-        System.out.println(base64Encoder.encode(bytes));
+        System.out.println(new String(bytes));
         System.out.println("=======================================");
         System.out.println();
     }
@@ -41,4 +42,5 @@ abstract class BaseCryptDecrypt {
     public abstract void process(File filein, File fileout) throws Exception;
 
     public abstract void process(String string) throws Exception;
+
 }

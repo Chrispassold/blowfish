@@ -31,7 +31,6 @@ public class Encrypt extends BaseCryptDecrypt {
         toConsole(signed);
     }
 
-
     private byte[] process(byte[] bytes) throws Exception {
         RSAPrivateKeySpec spec = chave.getPrivateKeySpec();
         final PrivateKey key = kf.generatePrivate(spec);

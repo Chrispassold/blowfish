@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.RSAPrivateKeySpec;
@@ -14,7 +15,6 @@ class Chave {
 
     public static final File PUBLIC_FILENAME = new File(".", "chave.pub");
     public static final File PRIVATE_FILENAME = new File(".", "chave.key");
-
     private BigInteger privateModulus;
     private BigInteger privateExpoent;
     private BigInteger publicModulus;
@@ -47,21 +47,21 @@ class Chave {
 
     private static KeyPair montarChave() throws NoSuchAlgorithmException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(2048);
+        keyPairGenerator.initialize(2048, SecureRandom.getInstance("SHA1PRNG"));
         return keyPairGenerator.genKeyPair();
     }
 
     RSAPrivateKeySpec getPrivateKeySpec() {
         return new RSAPrivateKeySpec(
-                new BigInteger(privateModulus.toByteArray()),
-                new BigInteger(privateExpoent.toByteArray())
+                privateModulus,
+                privateExpoent
         );
     }
 
     RSAPublicKeySpec getPublicKeySpec() {
         return new RSAPublicKeySpec(
-                new BigInteger(publicModulus.toByteArray()),
-                new BigInteger(publicExpoent.toByteArray())
+                publicModulus,
+                publicExpoent
         );
     }
 
